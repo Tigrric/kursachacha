@@ -26,7 +26,7 @@ namespace kursachacha
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void entrance_Click(object sender, EventArgs e)
         {
             string login = loginBox.Text;
             string password = GetMD5Hash(PasswordBox.Text);
