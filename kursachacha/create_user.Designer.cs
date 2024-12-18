@@ -37,9 +37,9 @@
             Никнейм = new Label();
             label4 = new Label();
             checkBoxAdmin = new CheckBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            createuser = new Button();
+            changepass = new Button();
+            exit_button = new Button();
             SuspendLayout();
             // 
             // label1
@@ -116,44 +116,44 @@
             checkBoxAdmin.Text = "Админ?";
             checkBoxAdmin.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // createuser
             // 
-            button1.Location = new Point(126, 242);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 10;
-            button1.Text = "Создать";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            createuser.Location = new Point(126, 242);
+            createuser.Name = "createuser";
+            createuser.Size = new Size(94, 29);
+            createuser.TabIndex = 10;
+            createuser.Text = "Создать";
+            createuser.UseVisualStyleBackColor = true;
+            createuser.Click += create_user_click;
             // 
-            // button2
+            // changepass
             // 
-            button2.Location = new Point(98, 277);
-            button2.Name = "button2";
-            button2.Size = new Size(152, 29);
-            button2.TabIndex = 11;
-            button2.Text = "Изменить пароль";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            changepass.Location = new Point(98, 277);
+            changepass.Name = "changepass";
+            changepass.Size = new Size(152, 29);
+            changepass.TabIndex = 11;
+            changepass.Text = "Изменить пароль";
+            changepass.UseVisualStyleBackColor = true;
+            changepass.Click += gotochange_pass;
             // 
-            // button3
+            // exit_button
             // 
-            button3.Location = new Point(126, 333);
-            button3.Name = "button3";
-            button3.Size = new Size(94, 29);
-            button3.TabIndex = 12;
-            button3.Text = "Выход";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            exit_button.Location = new Point(126, 333);
+            exit_button.Name = "exit_button";
+            exit_button.Size = new Size(94, 29);
+            exit_button.TabIndex = 12;
+            exit_button.Text = "Выход";
+            exit_button.UseVisualStyleBackColor = true;
+            exit_button.Click += exit_click;
             // 
-            // Form2
+            // create_user
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(342, 368);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(exit_button);
+            Controls.Add(changepass);
+            Controls.Add(createuser);
             Controls.Add(checkBoxAdmin);
             Controls.Add(label4);
             Controls.Add(Никнейм);
@@ -163,9 +163,8 @@
             Controls.Add(textBoxApplicantId);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form2";
+            Name = "create_user";
             Text = "Создание пользователей";
-            Load += button1_Click;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -181,8 +180,8 @@
         private Label Никнейм;
         private Label label4;
         private CheckBox checkBoxAdmin;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button createuser;
+        private Button changepass;
+        private Button exit_button;
     }
 }

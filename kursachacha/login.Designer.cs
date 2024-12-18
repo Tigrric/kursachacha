@@ -30,7 +30,7 @@
         {
             loginBox = new TextBox();
             PasswordBox = new TextBox();
-            button1 = new Button();
+            entrance = new Button();
             label1 = new Label();
             label2 = new Label();
             SuspendLayout();
@@ -49,15 +49,15 @@
             PasswordBox.Size = new Size(127, 27);
             PasswordBox.TabIndex = 1;
             // 
-            // button1
+            // entrance
             // 
-            button1.Location = new Point(103, 173);
-            button1.Name = "button1";
-            button1.Size = new Size(70, 29);
-            button1.TabIndex = 2;
-            button1.Text = "Вход";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            entrance.Location = new Point(103, 173);
+            entrance.Name = "entrance";
+            entrance.Size = new Size(70, 29);
+            entrance.TabIndex = 2;
+            entrance.Text = "Вход";
+            entrance.UseVisualStyleBackColor = true;
+            entrance.Click += entrance_Click;
             // 
             // label1
             // 
@@ -77,19 +77,18 @@
             label2.TabIndex = 4;
             label2.Text = "Пароль";
             // 
-            // Form1
+            // login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(286, 225);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(entrance);
             Controls.Add(PasswordBox);
             Controls.Add(loginBox);
-            Name = "Form1";
+            Name = "login";
             Text = "Вход";
-            Load += button1_Click;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -98,7 +97,7 @@
 
         private TextBox loginBox;
         private TextBox PasswordBox;
-        private Button button1;
+        private Button entrance;
         private Label label1;
         private Label label2;
     }

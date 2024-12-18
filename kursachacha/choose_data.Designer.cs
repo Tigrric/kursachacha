@@ -28,47 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            act = new Button();
+            profile = new Button();
+            exit_button = new Button();
             SuspendLayout();
             // 
-            // button1
+            // act
             // 
-            button1.Location = new Point(89, 31);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "Акты";
-            button1.UseVisualStyleBackColor = true;
+            act.Location = new Point(89, 31);
+            act.Name = "act";
+            act.Size = new Size(94, 29);
+            act.TabIndex = 0;
+            act.Text = "Акты";
+            act.UseVisualStyleBackColor = true;
+            act.Click += go_to_act;
             // 
-            // button2
+            // profile
             // 
-            button2.Location = new Point(51, 89);
-            button2.Name = "button2";
-            button2.Size = new Size(166, 29);
-            button2.TabIndex = 1;
-            button2.Text = "Личный кабинет";
-            button2.UseVisualStyleBackColor = true;
+            profile.Location = new Point(51, 89);
+            profile.Name = "profile";
+            profile.Size = new Size(166, 29);
+            profile.TabIndex = 1;
+            profile.Text = "Личный кабинет";
+            profile.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // exit_button
             // 
-            button3.Location = new Point(89, 146);
-            button3.Name = "button3";
-            button3.Size = new Size(94, 29);
-            button3.TabIndex = 2;
-            button3.Text = "Выход";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            exit_button.Location = new Point(89, 146);
+            exit_button.Name = "exit_button";
+            exit_button.Size = new Size(94, 29);
+            exit_button.TabIndex = 2;
+            exit_button.Text = "Выход";
+            exit_button.UseVisualStyleBackColor = true;
+            exit_button.Click += exit_click;
             // 
             // choose_data
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(281, 214);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(exit_button);
+            Controls.Add(profile);
+            Controls.Add(act);
             Name = "choose_data";
             Text = "Выбор данных";
             ResumeLayout(false);
@@ -76,8 +77,8 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button act;
+        private Button profile;
+        private Button exit_button;
     }
 }

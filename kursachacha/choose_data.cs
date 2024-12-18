@@ -12,17 +12,23 @@ namespace kursachacha
 {
     public partial class choose_data : Form
     {
-        private readonly string connectionString = "Server=localhost; port=5432; user id=postgres; password=1111; database=kurs";
         public choose_data()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void exit_click(object sender, EventArgs e)
         {
             login login = new login();
             login.Show();
             this.Close();
+        }
+
+        private void go_to_act(object sender, EventArgs e)
+        {
+            act act = new act();
+            act.Show();
+            this.Hide();
         }
     }
 }

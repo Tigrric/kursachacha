@@ -30,12 +30,12 @@
         {
             textBoxLogin = new TextBox();
             textBoxPassword = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            update = new Button();
+            returnback = new Button();
             label2 = new Label();
             label3 = new Label();
             label1 = new Label();
-            button3 = new Button();
+            exit_button = new Button();
             SuspendLayout();
             // 
             // textBoxLogin
@@ -52,25 +52,25 @@
             textBoxPassword.Size = new Size(125, 27);
             textBoxPassword.TabIndex = 1;
             // 
-            // button1
+            // update
             // 
-            button1.Location = new Point(111, 251);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 2;
-            button1.Text = "обновить";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            update.Location = new Point(111, 251);
+            update.Name = "update";
+            update.Size = new Size(94, 29);
+            update.TabIndex = 2;
+            update.Text = "обновить";
+            update.UseVisualStyleBackColor = true;
+            update.Click += upd;
             // 
-            // button2
+            // returnback
             // 
-            button2.Location = new Point(111, 286);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 3;
-            button2.Text = "вернуться";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            returnback.Location = new Point(111, 286);
+            returnback.Name = "returnback";
+            returnback.Size = new Size(94, 29);
+            returnback.TabIndex = 3;
+            returnback.Text = "вернуться";
+            returnback.UseVisualStyleBackColor = true;
+            returnback.Click += return_back;
             // 
             // label2
             // 
@@ -98,30 +98,30 @@
             label1.TabIndex = 7;
             label1.Text = "Данное окно предназначено для обновление пароля, если вы случйно перешли сюда, то нажмите \"вернуться\"";
             // 
-            // button3
+            // exit_button
             // 
-            button3.Location = new Point(111, 321);
-            button3.Name = "button3";
-            button3.Size = new Size(94, 29);
-            button3.TabIndex = 8;
-            button3.Text = "Выход";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            exit_button.Location = new Point(111, 321);
+            exit_button.Name = "exit_button";
+            exit_button.Size = new Size(94, 29);
+            exit_button.TabIndex = 8;
+            exit_button.Text = "Выход";
+            exit_button.UseVisualStyleBackColor = true;
+            exit_button.Click += exit_click;
             // 
-            // Form3
+            // change_pass
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(325, 363);
-            Controls.Add(button3);
+            Controls.Add(exit_button);
             Controls.Add(label1);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(returnback);
+            Controls.Add(update);
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxLogin);
-            Name = "Form3";
+            Name = "change_pass";
             Text = "Изменение пароля";
             ResumeLayout(false);
             PerformLayout();
@@ -131,11 +131,11 @@
 
         private TextBox textBoxLogin;
         private TextBox textBoxPassword;
-        private Button button1;
-        private Button button2;
+        private Button update;
+        private Button returnback;
         private Label label2;
         private Label label3;
         private Label label1;
-        private Button button3;
+        private Button exit_button;
     }
 }

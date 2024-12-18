@@ -32,7 +32,8 @@ namespace kursachacha
                 return builder.ToString();
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void create_user_click(object sender, EventArgs e)
         {
             try
             {
@@ -113,14 +114,14 @@ namespace kursachacha
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void gotochange_pass(object sender, EventArgs e)
         {
             change_pass change_pass = new change_pass();
             change_pass.Show();
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void exit_click(object sender, EventArgs e)
         {
             login login = new login();
             login.Show();
