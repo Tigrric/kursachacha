@@ -16,5 +16,15 @@ namespace kursachacha
         {
             InitializeComponent();
         }
+
+        private void exit_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void returnback_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

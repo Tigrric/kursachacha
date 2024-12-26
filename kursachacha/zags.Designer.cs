@@ -50,6 +50,7 @@
             exit_button.TabIndex = 11;
             exit_button.Text = "Выход";
             exit_button.UseVisualStyleBackColor = true;
+            exit_button.Click += exit_button_Click;
             // 
             // returnback
             // 
@@ -59,6 +60,7 @@
             returnback.TabIndex = 12;
             returnback.Text = "Назад";
             returnback.UseVisualStyleBackColor = true;
+            returnback.Click += returnback_Click;
             // 
             // zags
             // 
