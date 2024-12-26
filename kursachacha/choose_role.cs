@@ -82,7 +82,7 @@ namespace kursachacha
 
         private void Viewzags_Click(object sender, EventArgs e)
         {
-            zags zags = new zags();
+            zags zags = new zags(_roleId, _employee);
             zags.Show();
         }
         private void Addzags_Click(object sender, EventArgs e)
