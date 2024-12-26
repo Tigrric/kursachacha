@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace kursachacha
 {
@@ -22,21 +23,8 @@ namespace kursachacha
             _isAdmin = isAdmin;
             _roleId = selectedId;
             _employee = isemployee;
-
-            ConfigureControls();
         }
 
-        private void ConfigureControls()
-        {
-            if (_isAdmin)
-            {
-                admin.Visible = true;
-            }
-            else
-            {
-                admin.Visible = false;
-            }
-        }
 
         private void exit_button_Click(object sender, EventArgs e)
         {
@@ -82,6 +70,22 @@ namespace kursachacha
         }
 
         private void zags_Click(object sender, EventArgs e)
+        {
+            ContextMenuStrip contextmenu = new ContextMenuStrip();
+
+            contextmenu.Items.Add("Просмотреть", null, Viewzags_Click);
+            contextmenu.Items.Add("Добавить", null, Addzags_Click);
+
+            // Отображение меню под кнопкой
+            contextmenu.Show(zags, new Point(0, acts.Height));
+        }
+
+        private void Viewzags_Click(object sender, EventArgs e)
+        {
+            zags zags = new zags();
+            zags.Show();
+        }
+        private void Addzags_Click(object sender, EventArgs e)
         {
 
         }
