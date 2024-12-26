@@ -14,11 +14,28 @@ namespace kursachacha
 {
     public partial class create_user : Form
     {
+        public event EventHandler Closed;
+        private bool _isAdmin;
+        private int _roleId;
+        private bool _employee;
         private readonly string connectionString = "Server=localhost; port=5432; user id=postgres; password=1111; database=kurs";
-        public create_user()
+        public create_user(int selectedId, bool isAdmin, bool employee)
         {
             InitializeComponent();
+            _roleId = selectedId;
+            _isAdmin = isAdmin;
+            _employee = employee;
+
+            // Настройте видимость элементов управления на основе роли пользователя
+            ConfigureControls();
         }
+
+        private void ConfigureControls()
+        {
+            checkBoxAdmin.Visible = _isAdmin;
+        }
+
+
         private static string GetMD5Hash(string text)
         {
             using (var hashAlg = MD5.Create())
@@ -51,10 +68,22 @@ namespace kursachacha
                     return;
                 }
 
-                // Проверяем, что ID заявителя и ID сотрудника не повторяются
+                // Проверяем, что ID заявителя и ID сотрудника не повторяются, а также логин
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
+
+                    // Проверка на дублирование логина
+                    using (var command = new NpgsqlCommand("SELECT COUNT(*) FROM password WHERE логин = @login", connection))
+                    {
+                        command.Parameters.AddWithValue("@login", login);
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Пользователь с таким логином уже существует.");
+                            return;
+                        }
+                    }
 
                     // Проверка на дублирование ID заявителя только если он указан
                     if (applicantId != null)
@@ -69,7 +98,9 @@ namespace kursachacha
                                 return;
                             }
                         }
-                        if (isAdmin)
+
+                        // Запрещаем создавать администратора с ID заявителя
+                        if (isAdmin && applicantId != null)
                         {
                             MessageBox.Show("Пользователь с ID заявителя не может быть администратором.");
                             return;
@@ -106,6 +137,12 @@ namespace kursachacha
                     }
 
                     MessageBox.Show("Пользователь успешно создан.");
+                    // Очищаем поля ввода после создания пользователя
+                    textBoxLogin.Clear();
+                    textBoxPassword.Clear();
+                    textBoxApplicantId.Clear();
+                    textBoxEmployeeId.Clear();
+                    checkBoxAdmin.Checked = false;
                 }
             }
             catch (Exception ex)
@@ -114,18 +151,29 @@ namespace kursachacha
             }
         }
 
-        private void gotochange_pass(object sender, EventArgs e)
-        {
-            change_pass change_pass = new change_pass();
-            change_pass.Show();
-            this.Hide();
-        }
-
         private void exit_click(object sender, EventArgs e)
         {
             login login = new login();
             login.Show();
+            this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void returnback_Click(object sender, EventArgs e)
+        {
+            intermediateаform intermediateаform = new intermediateаform(_roleId,_isAdmin,_employee);
+            intermediateаform.Show();
+            this.Close();
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            Closed?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void create_user_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

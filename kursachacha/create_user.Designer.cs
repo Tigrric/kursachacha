@@ -38,8 +38,8 @@
             label4 = new Label();
             checkBoxAdmin = new CheckBox();
             createuser = new Button();
-            changepass = new Button();
             exit_button = new Button();
+            returnback = new Button();
             SuspendLayout();
             // 
             // label1
@@ -118,23 +118,13 @@
             // 
             // createuser
             // 
-            createuser.Location = new Point(126, 242);
+            createuser.Location = new Point(126, 229);
             createuser.Name = "createuser";
             createuser.Size = new Size(94, 29);
             createuser.TabIndex = 10;
             createuser.Text = "Создать";
             createuser.UseVisualStyleBackColor = true;
             createuser.Click += create_user_click;
-            // 
-            // changepass
-            // 
-            changepass.Location = new Point(98, 277);
-            changepass.Name = "changepass";
-            changepass.Size = new Size(152, 29);
-            changepass.TabIndex = 11;
-            changepass.Text = "Изменить пароль";
-            changepass.UseVisualStyleBackColor = true;
-            changepass.Click += gotochange_pass;
             // 
             // exit_button
             // 
@@ -146,13 +136,23 @@
             exit_button.UseVisualStyleBackColor = true;
             exit_button.Click += exit_click;
             // 
+            // returnback
+            // 
+            returnback.Location = new Point(126, 299);
+            returnback.Name = "returnback";
+            returnback.Size = new Size(94, 29);
+            returnback.TabIndex = 13;
+            returnback.Text = "вернуться";
+            returnback.UseVisualStyleBackColor = true;
+            returnback.Click += returnback_Click;
+            // 
             // create_user
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(342, 368);
+            Controls.Add(returnback);
             Controls.Add(exit_button);
-            Controls.Add(changepass);
             Controls.Add(createuser);
             Controls.Add(checkBoxAdmin);
             Controls.Add(label4);
@@ -164,7 +164,9 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "create_user";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Создание пользователей";
+            FormClosed += create_user_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -181,7 +183,7 @@
         private Label label4;
         private CheckBox checkBoxAdmin;
         private Button createuser;
-        private Button changepass;
         private Button exit_button;
+        private Button returnback;
     }
 }

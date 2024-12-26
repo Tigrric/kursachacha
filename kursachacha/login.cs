@@ -6,6 +6,10 @@ namespace kursachacha
 {
     public partial class login : Form
     {
+        public static int selectedId { get; private set; } // Статическая переменная для хранения ID заявителя
+        public static bool isAdmin;
+        public static bool isemployee;
+
         public login()
         {
             InitializeComponent();
@@ -42,7 +46,7 @@ namespace kursachacha
                         MessageBox.Show("Введите логин и пароль.");
                         return;
                     }
-                    using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT \"id заявителя\", \"id сотрудника\", админ FROM password WHERE логин = @login AND пароль = @password", connection))
+                    using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT \"id заявителя\", \"id сотрудника\", админ, работник FROM password WHERE логин = @login AND пароль = @password", connection))
                     {
                         cmd.Parameters.AddWithValue("@login", login);
                         cmd.Parameters.AddWithValue("@password", password);
@@ -55,24 +59,30 @@ namespace kursachacha
                                 object idЗаявителя = reader["id заявителя"];
                                 object idСотрудника = reader["id сотрудника"];
                                 bool isAdmin = reader.GetBoolean(reader.GetOrdinal("админ"));
+                                isAdmin = reader.GetBoolean(reader.GetOrdinal("админ"));
+                                bool isemployee = reader.GetBoolean(reader.GetOrdinal("работник"));
+                                isemployee = reader.GetBoolean(reader.GetOrdinal("работник"));
 
                                 if (idЗаявителя == DBNull.Value && idСотрудника == DBNull.Value)
                                 {
                                     MessageBox.Show("Вас нет в базе.");
                                 }
-                                else if (idСотрудника != DBNull.Value && isAdmin)
+                                else if (idСотрудника != DBNull.Value)
                                 {
-                                    create_user create_user = new create_user();
-                                    create_user.Show();
+                                    selectedId = Convert.ToInt32(idСотрудника);
+
+                                    choose_role choose_role = new choose_role(selectedId, isAdmin, isemployee);
+                                    choose_role.Show();
                                     this.Hide();
                                 }
                                 else if (idЗаявителя != DBNull.Value)
                                 {
-                                    choose_data choose_data = new choose_data();
+                                    selectedId = Convert.ToInt32(idЗаявителя); // Сохраняем ID заявителя
+
+                                    choose_data choose_data = new choose_data(selectedId, isemployee);
                                     choose_data.Show();
                                     this.Hide();
                                 }
-                                // Здесь можно добавить обработку для других ролей
                             }
                             else
                             {
@@ -86,6 +96,11 @@ namespace kursachacha
             {
                 MessageBox.Show("Ошибка при подключении к базе данных: " + ex.Message);
             }
+        }
+
+        private void login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -71,7 +71,9 @@
             Controls.Add(profile);
             Controls.Add(act);
             Name = "choose_data";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Выбор данных";
+            FormClosed += choose_data_FormClosed;
             ResumeLayout(false);
         }
 

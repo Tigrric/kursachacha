@@ -122,7 +122,9 @@
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxLogin);
             Name = "change_pass";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Изменение пароля";
+            FormClosed += change_pass_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

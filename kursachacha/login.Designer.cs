@@ -88,7 +88,9 @@
             Controls.Add(PasswordBox);
             Controls.Add(loginBox);
             Name = "login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Вход";
+            FormClosed += login_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

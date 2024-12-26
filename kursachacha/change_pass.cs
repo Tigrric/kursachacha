@@ -14,11 +14,24 @@ namespace kursachacha
 {
     public partial class change_pass : Form
     {
+        private bool _isAdmin;
+        private int _roleId;
+        private bool _employee;
         private readonly string connectionString = "Server=localhost; port=5432; user id=postgres; password=1111; database=kurs";
-        public change_pass()
+        public change_pass(int selectedId, bool isAdmin, bool employee)
         {
             InitializeComponent();
+            _roleId = selectedId;
+            _isAdmin = isAdmin;
+
+            ConfigureControls();
+            _employee = employee;
         }
+        private void ConfigureControls()
+        {
+            update.Visible = true;
+        }
+
         private static string GetMD5Hash(string text)
         {
             using (var hashAlg = MD5.Create())
@@ -91,9 +104,9 @@ namespace kursachacha
 
         private void return_back(object sender, EventArgs e)
         {
-            create_user create_user = new create_user();
-            create_user.Show();
-            this.Hide();
+            intermediateаform intermediateаform = new intermediateаform(_roleId, _isAdmin, _employee);
+            intermediateаform.Show();
+            this.Close();
         }
 
         private void exit_click(object sender, EventArgs e)
@@ -101,6 +114,11 @@ namespace kursachacha
             login login = new login();
             login.Show();
             this.Close();
+        }
+
+        private void change_pass_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }
