@@ -79,7 +79,7 @@ namespace kursachacha
                                 {
                                     selectedId = Convert.ToInt32(idЗаявителя); // Сохраняем ID заявителя
 
-                                    choose_data choose_data = new choose_data(selectedId, isemployee);
+                                    choose_data choose_data = new choose_data(selectedId, isAdmin ,isemployee);
                                     choose_data.Show();
                                     this.Hide();
                                 }

@@ -165,11 +165,6 @@ namespace kursachacha
             intermediateаform.Show();
             this.Close();
         }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-            Closed?.Invoke(this, EventArgs.Empty);
-        }
 
         private void create_user_FormClosed(object sender, FormClosedEventArgs e)
         {

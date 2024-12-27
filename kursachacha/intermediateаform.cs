@@ -16,7 +16,7 @@ namespace kursachacha
         public bool _isAdmin;
         public bool _employee;
 
-        private add_employee _employeeForm; // Переименовано для ясности
+        private add_employee _employeeForm;
         private create_user _createUserForm;
         private change_pass _changePassForm;
 

@@ -15,6 +15,7 @@ namespace kursachacha
         // Поле для хранения selectedId
         public int _roleId { get; set; }
         public bool _employee;
+        private bool _isAdmin;
 
 
         public choose_data()
@@ -23,7 +24,7 @@ namespace kursachacha
         }
 
         // Конструктор с параметром
-        public choose_data(int selectedId, bool employee) : this()
+        public choose_data(int selectedId, bool isAdmin, bool employee) : this()
         {
             _roleId = selectedId;
             _employee = employee;
@@ -39,7 +40,7 @@ namespace kursachacha
         private void go_to_act(object sender, EventArgs e)
         {
             // Передача selectedId в форму act
-            act actForm = new act(_roleId, _employee);
+            act actForm = new act(_roleId, _isAdmin, _employee);
             actForm.Show();
             this.Hide();
         }
@@ -47,6 +48,13 @@ namespace kursachacha
         private void choose_data_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void profile_Click(object sender, EventArgs e)
+        {
+            profile profile =new profile(_roleId, _isAdmin, _employee);
+            profile.Show();
+            this.Close();
         }
     }
 }

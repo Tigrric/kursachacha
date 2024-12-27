@@ -51,6 +51,7 @@
             profile.TabIndex = 1;
             profile.Text = "Личный кабинет";
             profile.UseVisualStyleBackColor = true;
+            profile.Click += profile_Click;
             // 
             // exit_button
             // 

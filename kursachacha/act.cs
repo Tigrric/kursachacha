@@ -9,14 +9,16 @@ namespace kursachacha
         private readonly string connectionString = "Server=localhost; port=5432; user id=postgres; password=1111; database=kurs";
         private int _roleId;
         private bool _employee;
+        private bool _isAdmin;
 
-        public act(int selectId, bool employee)
+        public act(int selectId,  bool isAdmin, bool employee)
         {
             InitializeComponent();
             _roleId = selectId;
             _employee = employee;
             ConfigureControls();
             LoadComboBoxData();
+            _isAdmin = isAdmin;
         }
 
         private void ConfigureControls()
@@ -27,7 +29,7 @@ namespace kursachacha
 
         private void return_back(object sender, EventArgs e)
         {
-            choose_data choose_Data = new choose_data(_roleId, _employee);
+            choose_data choose_Data = new choose_data(_roleId, _isAdmin, _employee);
             choose_Data.Show();
             this.Close();
         }
@@ -142,7 +144,7 @@ namespace kursachacha
 
         private void act_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+
         }
     }
 }

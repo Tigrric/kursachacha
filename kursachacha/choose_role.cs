@@ -16,6 +16,9 @@ namespace kursachacha
         private bool _isAdmin;
         private int _roleId;
         private bool _employee;
+        private zags _zagsview;
+        private act _actview;
+        private profile _profile;
 
         public choose_role(int selectedId, bool isAdmin, bool isemployee)
         {
@@ -23,8 +26,14 @@ namespace kursachacha
             _isAdmin = isAdmin;
             _roleId = selectedId;
             _employee = isemployee;
+            ConfigureControls();
         }
 
+        private void ConfigureControls()
+        {
+            if (_isAdmin) { admin.Visible = true; } 
+            else { admin.Visible = false; }
+        }
 
         private void exit_button_Click(object sender, EventArgs e)
         {
@@ -55,8 +64,10 @@ namespace kursachacha
 
         private void ViewActs_Click(object sender, EventArgs e)
         {
-            act act = new act(_roleId, _employee);
-            act.Show();
+            _actview = new act(_roleId, _isAdmin, _employee);
+            _actview.FormClosed += ChildFormClosed;
+            _actview.Show();
+
         }
 
         private void AddAct_Click(object sender, EventArgs e)
@@ -66,7 +77,9 @@ namespace kursachacha
 
         private void profile_Click(object sender, EventArgs e)
         {
-
+            _profile = new profile(_roleId, _isAdmin ,_employee);
+            _profile.FormClosed += ChildFormClosed;
+            _profile.Show();
         }
 
         private void zags_Click(object sender, EventArgs e)
@@ -82,8 +95,9 @@ namespace kursachacha
 
         private void Viewzags_Click(object sender, EventArgs e)
         {
-            zags zags = new zags(_roleId, _employee);
-            zags.Show();
+            _zagsview = new zags(_roleId, _isAdmin, _employee);
+            _zagsview.FormClosed += ChildFormClosed;
+            _zagsview.Show();
         }
         private void Addzags_Click(object sender, EventArgs e)
         {
@@ -98,6 +112,15 @@ namespace kursachacha
         private void choose_role_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+        private void ChildFormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Проверяем, закрылась ли одна из дочерних форм.  Если да, закрываем родительскую.
+            Form closedForm = sender as Form;
+            if (closedForm == _actview || closedForm == _zagsview || closedForm == _profile)
+            {
+                this.Close();
+            }
         }
     }
 }
